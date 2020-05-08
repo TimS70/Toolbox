@@ -1,0 +1,54 @@
+// write your code here
+
+var img = new SimpleImage("duke_blue_devil.png");
+print(img);
+
+for (var pixel of img.values()){
+    if (pixel.getX() < img.getWidth()/3){
+        pixel.setRed(255); 
+    }
+else if (pixel.getX() < img.getWidth()*2/3){
+    pixel.setGreen(255);
+}
+else {
+    pixel.setBlue(255);
+}
+}
+print(img)
+
+
+// write your code here
+
+var img = new SimpleImage("drewRobert.png");
+print(img);
+
+function swapRedGreen(pixel){
+    var r = pixel.getRed(); 
+    var g = pixel.getGreen();
+    pixel.setRed(g);
+    pixel.setGreen(r);
+} 
+
+for (var pixel of img.values()){
+   swapRedGreen(pixel);
+}
+print(img)
+
+// write your code here
+
+var img = new SimpleImage("duke_blue_devil.png");
+print(img);
+
+function swapBlueYellow(pixel){
+    if (pixel.getBlue() < 255){
+        pixel.setRed(255);
+        pixel.setGreen(255);
+        pixel.setBlue(0);
+    }
+    else {}
+} 
+
+for (var pixel of img.values()){
+   swapBlueYellow(pixel);
+}
+print(img)

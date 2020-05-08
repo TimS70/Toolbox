@@ -1,0 +1,45 @@
+// Scientific method to debugging: gather information, apply your knowledge about images and programming, form a hypothesis, test your hypothesis, and finally, change the code to fix the problem. 
+
+// 1. Knowlwedge: The top left corner (x<Width/2 & y<Height/2) is yellow and not red. Yellow arises from a combination of red and green. If statements cover everything that meets a condition. Else statements cover everything that does not meet the condition. The setGreen-command therefore covers every pixel that is above (or below) half the height.  
+
+// 2. Hypothesis: Green in line 18 somehow reaches out to Red in line 12 because it is not conditioned on the width. We can solve this problem by introducing another if condition for green depending on the width.  
+
+var img = new SimpleImage(200,200);
+for (var px of img.values()){
+  var x = px.getX();
+  var y = px.getY();
+  if (x < img.getWidth()/2){
+    px.setRed(255);
+  }
+  if (y>img.getHeight()/2){
+    px.setBlue(255);
+  }
+  else if (x>=img.getWidth()/2){
+    px.setGreen(255);
+  }
+}
+print (img);
+
+
+//Part 3
+var img = new SimpleImage("eastereggs.jpg");
+
+function setBlack(pixel) {
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(0);
+    return pixel;
+}
+
+for (var pixel of img.values()){
+    var x = pixel.getX();
+    var y = pixel.getY();
+    var d = 10;
+    if (x<=d || x>=(img.getWidth()-d)){
+    setBlack(pixel);
+    }
+    if (y<=d || y>=(img.getHeight()-d)){
+    setBlack(pixel);
+    }
+}
+print(img);

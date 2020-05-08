@@ -1,0 +1,22 @@
+// write your code here
+var fgimage = new SimpleImage("usain.jpg");
+var bgimage = new SimpleImage("palm-and-beach.png");
+w = fgimage.getWidth();
+h = fgimage.getHeight();
+bgimage.setSize(w, h);
+var output = new SimpleImage(w, h)
+
+for (var pixel of fgimage.values()){
+    if (pixel.getGreen() > (pixel.getRed() + pixel.getBlue())){
+        var x = pixel.getX();
+        var y = pixel.getY();
+        px = bgimage.getPixel(x,y);
+        output.setPixel(x, y, px);
+    }
+    else{
+        var x = pixel.getX();
+        var y = pixel.getY();
+        output.setPixel(x,y,pixel);
+    }
+}
+print(output)
