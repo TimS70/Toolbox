@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<h1>Countdown</h1>
+<p>Insert the number of seconds to count down.</p>
+
+<p>Time as seconds: </p><input type="number" step="1" id="t1">
+<input type="button" value="Set Time / Reset" onclick="setTimer()">
+
+<input type="button" value="Start" onclick="countdown()">
+<input type="button" value="Stop" onclick="stopTimer()">
+
+<p id="demo"></p>
+
+<audio id="myAudio">
+  <source src="Beep25.mp3" type="audio/mp3">
+  Whoops! Here should be an audio element but your browser does not seem to support it.
+</audio>
+
+</body>
+</html>
+
+<script src="Timer.js"></script>
