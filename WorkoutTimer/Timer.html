@@ -1,13 +1,35 @@
 <html>
+<head>
+  <title>Workout Timer</title>
+  <link rel="stylesheet" type=text/css href="Style.css" />
+</head>
+
 <body>
+<div class="top">
   <h1>Countdown</h1>
-  <p>Insert the number of seconds to count down.</p>
-
+</div>
 <div class="setup">
-  <p>Time as seconds: </p><input type="number" step="1" id="t1">
-  <input type="button" value="Set Time / Reset" onclick="setTimer()">
+  <table id="setuptable">
+    <tr>
+      <td>How long?</td>
+      <td><input type="number" value="30" step="1" id="t1"></td>
+    </tr>
+    <tr>
+      <td>How much break?</td>
+      <td><input type="number" value="90" step="1" id="t2"></td>
+    </tr>
+    <tr>
+      <td>How many sets?</td>
+      <td><input type="number" value="3" step="1" id="t3"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right"><input type="button" value="Set Time / Reset" onclick="setTimer()"></td>
+    </tr>
+  </table>
 
-  <p>Define your Exercises:</p>
+What exercises?
+<br>
   1 <input type="text" id="ex1" value="Plank"><br>
   2 <input type="text" id="ex2" value="Push up Plank"><br>
   3 <input type="text" id="ex3" value="Side Plank"><br>
@@ -22,25 +44,29 @@
 <br>
 
 <div class="control">
+  <input type="button" value="Start" onclick="loop()">
   <input type="button" value="Stop" onclick="stopTimer()">
-  <input type="button" value="Loop" onclick="loop()">
 </div>
 
 <br>
 
 <div class="output">
-  <table style="width:100%">
-    <tr>
-      <th>Variable</th>
-      <th>Output</th>
-    </tr>
+  <table align="left">
     <tr>
       <td>Seconds left</td>
-      <td><p id="demo"></p></td>
+      <td><p class="highl1" id="demo"></p></td>
+    </tr>
+    <tr>
+      <td>Break</td>
+      <td><p class="highl1" id="break"></p></td>
     </tr>
     <tr>
       <td>Loop Nr. </td>
       <td><p id="loop">1</p></td>
+    </tr>
+    <tr>
+      <td>Set</td>
+      <td><p id="set">1</p></td>
     </tr>
     <tr>
       <td>Current Exercise</td>
@@ -54,18 +80,18 @@
       <td>Message</td>
       <td><p id="message"></p></td>
     </tr>
-    <tr>
-      <td>Break</td>
-      <td><p id="break"></p></td>
-    </tr>
   </table>
   <br>
 </div>
 
 <div class="backend">
-  <audio id="myAudio">
+  <audio id="beep">
     <source src="Beep25.mp3" type="audio/mp3">
       Whoops! Here should be an audio element but your browser does not seem to support it.
+  </audio>
+  <audio id="achievement">
+    <source src="Achievement.mp3" type="audio/mp3">
+      Whoops! Here should be another audio element but your browser does not seem to support it.
   </audio>
 </div>
 

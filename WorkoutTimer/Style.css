@@ -1,0 +1,24 @@
+body {
+  font-family: "Open Sans";
+}
+
+.h1 {
+  font-size: 14pt;
+  font-weight: bold;
+
+}
+.top {
+  text-align: center;
+  border-bottom-style: solid;
+}
+
+.highl1 {
+  font-weight: bold;
+  font-size: 30pt;
+}
+
+.red {
+  font-weight: bold;
+  font-size: 30pt;
+  color: red;
+}

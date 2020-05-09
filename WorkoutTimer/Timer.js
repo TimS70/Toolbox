@@ -1,25 +1,46 @@
 //Global Variables
-var t;
-var myInterval;
-var beep = document.getElementById("myAudio");
+var t; //time
 var loopNr;
 var maxLoop;
+var b; //break time
+var set; //set
+var goalset; //How many sets do you want to do?
+var myInterval; //countdown steam enginge
+var myIntervalBreak; //break steam enginge
+var beep = document.getElementById("beep"); //sound beep
+var achiev = document.getElementById("achievement"); //sound achievement, when it's done
+
+//Exercise Variables
+var Ex1;
+var Ex2;
+var Ex3;
+var Ex4;
+var Ex5;
+var Ex6;
+var Ex7;
+var Ex8;
+var Ex9;
 
 function setTimer() {
-  t = document.getElementById("t1").value; //Get the seconds from the input t1
-  document.getElementById("demo").innerHTML = t; //Show the seconds from input t1 in in p demo
-  loopNr = 1;
   clearInterval(myInterval);
+
+  //Define Variables
+  t = document.getElementById("t1").value; //Get the seconds from the input t1
+  b = document.getElementById("t2").value;
+  loopNr = 1;
+  set = 1;
+  goalset = document.getElementById("t3").value;
+
   //Define Exercises
-  var Ex1 = document.getElementById("ex1").value;
-  var Ex2 = document.getElementById("ex2").value;
-  var Ex3 = document.getElementById("ex3").value;
-  var Ex4 = document.getElementById("ex4").value;
-  var Ex5 = document.getElementById("ex5").value;
-  var Ex6 = document.getElementById("ex6").value;
-  var Ex7 = document.getElementById("ex7").value;
-  var Ex8 = document.getElementById("ex8").value;
-  var Ex9 = document.getElementById("ex9").value;
+  Ex1 = document.getElementById("ex1").value;
+  Ex2 = document.getElementById("ex2").value;
+  Ex3 = document.getElementById("ex3").value;
+  Ex4 = document.getElementById("ex4").value;
+  Ex5 = document.getElementById("ex5").value;
+  Ex6 = document.getElementById("ex6").value;
+  Ex7 = document.getElementById("ex7").value;
+  Ex8 = document.getElementById("ex8").value;
+  Ex9 = document.getElementById("ex9").value;
 
   //Set maxLoop to the number of exercises with entries
     // One day, this will work...
@@ -28,7 +49,7 @@ function setTimer() {
     //     maxLoop = i-1;
     //   }
 
-  //Define maximum number of iterations per set
+  //Define maxloop (maximum number of iterations) per set
   if (Ex1=="") {alert("Need exercise for looping")}
   else if (Ex2=="") {maxLoop=1}
   else if (Ex3=="") {maxLoop=2}
@@ -40,31 +61,54 @@ function setTimer() {
   else if (Ex9=="") {maxLoop=8}
   else {maxLoop=9}
 
+  //Output
+  document.getElementById("demo").innerHTML = t; //Show the seconds from input t1 in in p demo
   document.getElementById("loop").innerHTML = loopNr + ' out of ' + maxLoop;
+  document.getElementById("break").innerHTML = b;
 }
 
 function loop() {
   clearInterval(myInterval);
+
+  //Get the steam engine running
   myInterval = setInterval(function() {
-    document.getElementById("demo").innerHTML = t; //Show the seconds from input t1 in in p demo
-    document.getElementById("loop").innerHTML = loopNr + ' out of ' + maxLoop;
-    t = t-1; //subtract one second
 
+    t = t-1; //Countdown
+
+    //If exercise finished
     if (t < 0) {
-      t = document.getElementById("t1").value;
-      beep.play();
-      loopNr = loopNr + 1;    //Go to next loop
-      document.getElementById("loop").innerHTML = loopNr;
-
-        if (loopNr > maxLoop) {
-          alert("Final exercise reached!");
-          setTimer()
-        }
-
+      beep.play();      //notification
+      t = document.getElementById("t1").value; //Reset time to t
+      loopNr = loopNr + 1; //Go to next loop
     }
 
+    //If set finished
+    if (loopNr > maxLoop) {
+      alert("Set finished!");
+      loopNr = 1;                  //Reset timer for next exercise
+      set = set + 1;               //Go to next set
+      clearInterval(myInterval);
+      myBreak();
+    }
 
-    //Show current exercise
+    //If workout is finished
+    if (set==goalset) {
+      achiev.play();
+      alert("You won!");
+      clearInterval(myInterval);
+    }
+
+    //Update Output
+    document.getElementById("demo").innerHTML = t; //Show the seconds from input t1 in in p demo
+
+    if (t<10) {
+      document.getElementById("demo").className = "red";
+    }
+
+    document.getElementById("loop").innerHTML = loopNr + ' out of ' + maxLoop;
+    document.getElementById("set").innerHTML = set;
+
+    //Show exercises
     if (loopNr == 1) {
       document.getElementById("CurrentExercise").innerHTML = Ex1;
       document.getElementById("NextExercise").innerHTML = Ex2;
@@ -101,9 +145,7 @@ function loop() {
       document.getElementById("CurrentExercise").innerHTML = Ex9;
     }
 
-
-
-//Labels
+    //Messages
     if (t<=10 && t>3) {
       document.getElementById("message").innerHTML = "Push yourself!";
     }
@@ -112,11 +154,34 @@ function loop() {
     }
     else {
       document.getElementById("message").innerHTML = " ";
-    }
-  }, 1000); //repeat countdown every second
 
-}
+    } //Close message if's
+  }, 1000); //Close setInterval and repeat each second
+} //Close function
 
 function stopTimer() {
   clearInterval(myInterval);
+  clearInterval(myIntervalBreak);
+}
+
+function myBreak() {
+  myIntervalBreak = setInterval(function() {
+
+    //If break is over
+    if (b<0) {
+      beep.play();
+      clearInterval(myIntervalBreak);
+      loop();
+    }
+
+    b = b-1;
+
+    if (b<10) {
+      document.getElementById("break").className = "red";
+    }
+
+    document.getElementById("break").innerHTML = b;
+
+
+  }, 1000) //Close setTimer and repeat every second
 }
