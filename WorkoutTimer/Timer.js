@@ -8,7 +8,8 @@ var goalset; //How many sets do you want to do?
 var myInterval; //countdown steam enginge
 var myIntervalBreak; //break steam enginge
 var beep = document.getElementById("beep"); //sound beep
-var achiev = document.getElementById("achievement"); //sound achievement, when it's done
+var achiev = document.getElementById("achievement");
+  //sound achievement, when it's done
 
 //Exercise Variables
 var Ex1;
@@ -62,7 +63,8 @@ function setTimer() {
   else {maxLoop=9}
 
   //Output
-  document.getElementById("demo").innerHTML = t; //Show the seconds from input t1 in in p demo
+  document.getElementById("demo").innerHTML = t;
+    //Show the seconds from input t1 in in p demo
   document.getElementById("loop").innerHTML = loopNr + ' out of ' + maxLoop;
   document.getElementById("break").innerHTML = b;
 }
@@ -99,7 +101,8 @@ function loop() {
     }
 
     //Update Output
-    document.getElementById("demo").innerHTML = t; //Show the seconds from input t1 in in p demo
+    document.getElementById("demo").innerHTML = t;
+      //Show the seconds from input t1 in in p demo
 
     if (t<10) {
       document.getElementById("demo").className = "red";
