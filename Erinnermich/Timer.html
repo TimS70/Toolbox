@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Erinnermich</title>
+  <link rel="stylesheet" type=text/css href="Style.css" />
+</head>
+
+<body>
+<div class="top">
+  <h1>Erinnermich</h1>
+</div>
+<div class="timer">
+
+Set time:
+<input type="number" id="inputMinutes" class="timeInput" value="25" class="tIn">
+:
+<input type="number" id="inputSeconds" class="timeInput" value="00" class="tIn">
+<input type="button" id="play" value="Play" onclick="playStopResume(this.id)">
+<input type="button" id="reset" value="Reset" onclick="playStopResume(this.id)">
+
+<p id="showtime"></p>
+<audio id="beep">
+  <source src="Beep25.mp3" type="audio/mp3">
+    Whoops! Here should be an audio element but your browser does not seem to support it.
+</audio>
+
+</div>
+
+</body>
+</html>
+
+<script src="Timer.js"></script>
