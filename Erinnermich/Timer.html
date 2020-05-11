@@ -5,43 +5,41 @@
 </head>
 
 <body>
-<div id="output">
-    <p id="showtime"></p>
-    <p id="showStopwatch"></p>
-    <p><span id="datetime"></span></p>
-</div>
-
-
-<div id="control">
-    <div class="top">
-        <h1>Erinnermich</h1>
+<div class="row">
+    <div id="output">
+        <p id="showtime"></p>
+        <p id="showStopwatch"></p>
+        <p><span id="datetime"></span></p>
     </div>
 
-    <table>
-        <tr>
-            <td>Set time (q, w)</td>
-            <td>
-                <input type="number" id="inputMinutes" class="timeinput" value="25" class="tIn">
-                :
-                <input type="number" id="inputSeconds" class="timeInput" value="00" class="tIn">
-                <input type="button" id="timer" value="Start" accesskey="q" onclick="TimerPlayStopResume(this.id)">
-                <input type="button" id="resetTimer" value="Reset" accesskey="w" onclick="TimerPlayStopResume(this.id)">
-            </td>
-        </tr>
-        <tr>
-            <td>Stop Time (a, s)</td>
-            <td>
-                <input type="button" id="stopwatch" value="Start"  accesskey="a" onclick="StopwatchPlayStopResume(this.id)">
-                <input type="button" id="resetStopwatch" value="Reset" accesskey="s" onclick="StopwatchPlayStopResume(this.id)">
-            </td>
-        </tr>
-        <tr>
-            <td>Time is time</td>
-            <td></td>
-        </tr>
-    <table>
+    <div id="control">
+        <div class="top">
+            <h1>Erinnermich</h1>
+        </div>
+    Set time
     <br>
-    <input type="button" id="hideButton" value="Hide All Elements" accesskey="c" onclick="showHideElements()">
+    <br>
+    <input type="number" id="inputMinutes" class="timeinput" value="25" class="tIn">
+    :
+    <input type="number" id="inputSeconds" class="timeInput" value="00" class="tIn">
+    <br>
+    <br>
+    <input type="button" id="timer" value="Start (q)" accesskey="q" onclick="TimerPlayStopResume(this.id)">
+    <input type="button" id="resetTimer" value="Reset (w)" accesskey="w" onclick="TimerPlayStopResume(this.id)">
+    <br>
+    <br>
+    Stop Time
+    <br>
+    <br>
+    <input type="button" id="stopwatch" value="Start (a)"  accesskey="a" onclick="StopwatchPlayStopResume(this.id)">
+    <input type="button" id="resetStopwatch" value="Reset (s)" accesskey="s" onclick="StopwatchPlayStopResume(this.id)">
+    <br>
+    <br>
+    Time is time
+    <br>
+    <br>
+    <input type="button" id="hideButton" value="Hide All Elements (c)" accesskey="c" onclick="showHideElements()">
+    </div>
 </div>
 
 <div id="audio">

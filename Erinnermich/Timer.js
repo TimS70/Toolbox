@@ -45,7 +45,7 @@ function TimerPlayStopResume(bId) {
             var inputSeconds = document.getElementById("inputSeconds").value;
             sec = 60 * inputMinutes + parseInt(inputSeconds);
             document.getElementById("showtime").innerHTML =
-                inputMinutes + " : " + inputSeconds;
+                inputMinutes + ":" + inputSeconds;
             countdown();
             document.getElementById("timer").value = "Stop";
             timerState = 1;
@@ -88,7 +88,7 @@ function countdown() {
 
         //Output
         document.getElementById("showtime").innerHTML =
-            Math.floor(sec/60) + " : " + (sec%60);
+            Math.floor(sec/60) + ":" + (sec%60);
     }, 1000) //close Interval
 }
 
@@ -101,7 +101,7 @@ function resetTimer() {
     var inputMinutes = document.getElementById("inputMinutes").value;
     var inputSeconds = document.getElementById("inputSeconds").value;
     document.getElementById("showtime").innerHTML =
-        inputMinutes + " : " + inputSeconds;
+        inputMinutes + ":" + inputSeconds;
 }
 
 // Stopwatch issues
@@ -112,7 +112,7 @@ function StopwatchPlayStopResume(bId) {
             // start countdown
             stopwatchSec = 0;
             document.getElementById("showStopwatch").innerHTML =
-                Math.floor(stopwatchSec/60) + " : " + (stopwatchSec%60);
+                Math.floor(stopwatchSec/60) + ":" + (stopwatchSec%60);
                 countup();
             document.getElementById("stopwatch").value = "Stop";
             stopwatchState = 1;
@@ -145,7 +145,7 @@ function countup() {
 
         //Output
         document.getElementById("showStopwatch").innerHTML =
-            Math.floor(stopwatchSec/60) + " : " + (stopwatchSec%60);
+            Math.floor(stopwatchSec/60) + ":" + (stopwatchSec%60);
     }, 1000) //close Interval
 }
 
@@ -155,5 +155,5 @@ function stopStopwatch() {
 
 function resetStopwatch() {
     clearInterval(stopwatchInterval);
-    document.getElementById("showStopwatch").innerHTML = 0 + " : " + 0;
+    document.getElementById("showStopwatch").innerHTML = 0 + ":" + 0;
 }

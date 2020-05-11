@@ -1,26 +1,32 @@
 body {
-    height: 100%;
     font-family: "Open Sans";
     color: white;
     background-color: black;
+    box-sizing: border-box;
 }
 
 
+
+.row {
+  display: flex;
+  margin:top
+}
 #output {
-    margin-top: 5%;
-    height:50%;
-    line-height: 10%;
+    flex: 85%;
+    height:100%;
+    line-height: 5%;
     font-weight: bold;
     color: white;
     font-size: 30pt;
-    font-size: 15vw;
+    font-size: 10vw;
+    padding-left: 5%;
 }
 
 #control {
-    height: 50%;
-    border: 1px solid lightgrey;
+    flex: 15%;
+    height: 100%;
+    border-left: 1px solid white;
     padding: 25px 25px 25px 25px;
-    margin: 25px 25px 25px 25px;
 }
 
 #showtime {
