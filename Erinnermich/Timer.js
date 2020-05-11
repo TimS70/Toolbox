@@ -1,10 +1,21 @@
-var state = 0;
-var myInterval;
+var timerState = 0;
+var timerInterval;
 var sec;
+var stopwatchState = 0;
+var stopwatchInterval;
+var stopwatchSec = 0;
 
-function playStopResume(bId) {
-    if (bId == "play") {
-        if (state == 0) {
+//Show time
+setInterval(function() {
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+}, 6000)
+
+// Timer issues
+
+function TimerPlayStopResume(bId) {
+    if (bId == "timer") {
+        if (timerState == 0) {
             // start countdown
             var inputMinutes = document.getElementById("inputMinutes").value;
             var inputSeconds = document.getElementById("inputSeconds").value;
@@ -12,33 +23,33 @@ function playStopResume(bId) {
             document.getElementById("showtime").innerHTML =
                 inputMinutes + " : " + inputSeconds;
             countdown();
-            document.getElementById("play").value = "Stop";
-            state = 1;
+            document.getElementById("timer").value = "Stop";
+            timerState = 1;
 
-        } else if (state == 1) {
+        } else if (timerState == 1) {
             // stop countdown
             stopTimer();
-            document.getElementById("play").value = "Resume";
-            state = 2;
+            document.getElementById("timer").value = "Resume";
+            timerState = 2;
 
-        } else if (state == 2) {
+        } else if (timerState == 2) {
             // resume countdown
             countdown();
-            document.getElementById("play").value = "Stop";
-            state = 1;
+            document.getElementById("timer").value = "Stop";
+            timerState = 1;
         }
     }
 
-    else if (bId == "reset") {
+    else if (bId == "resetTimer") {
         // reset countdown
-        reset();
-        document.getElementById("play").value = "Start";
-        state = 0;
+        resetTimer();
+        document.getElementById("timer").value = "Start";
+        timerState = 0;
     }
 }
 
 function countdown() {
-    myInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         sec -= 1;
 
         if (sec<=0) {
@@ -46,10 +57,10 @@ function countdown() {
             beep.play();
             alert("Stretching, Musik, Wasser")
             open("https://docs.google.com/spreadsheets/d/19EUV_CV-yVsehXXbB-IABMfWjEw7siydBhsiAJodR9Y/edit#gid=0", "_blank")
-            clearInterval(myInterval);
-            reset();
-            document.getElementById("play").value = "Start";
-            state=0;
+            clearInterval(timerInterval);
+            resetTimer();
+            document.getElementById("timer").value = "Start";
+            timerState=0;
         }
 
         //Output
@@ -59,13 +70,69 @@ function countdown() {
 }
 
 function stopTimer() {
-    clearInterval(myInterval);
+    clearInterval(timerInterval);
 }
 
-function reset() {
-    clearInterval(myInterval);
+function resetTimer() {
+    clearInterval(timerInterval);
     var inputMinutes = document.getElementById("inputMinutes").value;
     var inputSeconds = document.getElementById("inputSeconds").value;
     document.getElementById("showtime").innerHTML =
         inputMinutes + " : " + inputSeconds;
+}
+
+// Stopwatch issues
+
+function StopwatchPlayStopResume(bId) {
+    if (bId == "stopwatch") {
+        if (stopwatchState == 0) {
+            // start countdown
+            //var inputMinutes = 0;
+            //var inputSeconds = 0;
+            //stopwatchSec = 60 * inputMinutes + parseInt(inputSeconds);
+            document.getElementById("showStopwatch").innerHTML =
+                0 + " : " + 0;
+            countup();
+            document.getElementById("stopwatch").value = "Stop";
+            stopwatchState = 1;
+
+        } else if (stopwatchState == 1) {
+            // stop countdown
+            stopStopwatch();
+            document.getElementById("stopwatch").value = "Resume";
+            stopwatchState = 2;
+
+        } else if (stopwatchState == 2) {
+            // resume countdown
+            countup();
+            document.getElementById("stopwatch").value = "Stop";
+            stopwatchState = 1;
+        }
+    }
+
+    else if (bId == "resetStopwatch") {
+        // reset countdown
+        resetStopwatch();
+        document.getElementById("stopwatch").value = "Start";
+        stopwatchState = 0;
+    }
+}
+
+function countup() {
+    stopwatchInterval = setInterval(function() {
+        stopwatchSec += 1;
+
+        //Output
+        document.getElementById("showStopwatch").innerHTML =
+            Math.floor(stopwatchSec/60) + " : " + (stopwatchSec%60);
+    }, 1000) //close Interval
+}
+
+function stopStopwatch() {
+    clearInterval(stopwatchInterval);
+}
+
+function resetStopwatch() {
+    clearInterval(stopwatchInterval);
+    document.getElementById("showStopwatch").innerHTML = 0 + " : " + 0;
 }

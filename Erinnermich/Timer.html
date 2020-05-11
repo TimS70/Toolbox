@@ -10,20 +10,33 @@
 </div>
 <div class="timer">
 
-Set time:
-<input type="number" id="inputMinutes" class="timeInput" value="25" class="tIn">
-:
-<input type="number" id="inputSeconds" class="timeInput" value="00" class="tIn">
-<input type="button" id="play" value="Play" onclick="playStopResume(this.id)">
-<input type="button" id="reset" value="Reset" onclick="playStopResume(this.id)">
+    Set time:
+    <input type="number" id="inputMinutes" class="timeInput" value="25" class="tIn">
+    :
+    <input type="number" id="inputSeconds" class="timeInput" value="00" class="tIn">
+    <input type="button" id="timer" value="Start" onclick="TimerPlayStopResume(this.id)">
+    <input type="button" id="resetTimer" value="Reset" onclick="TimerPlayStopResume(this.id)">
 
-<p id="showtime"></p>
+    <p id="showtime"></p>
+</div>
+
+<div class="timer">
+
+    Stop Time
+    <input type="button" id="stopwatch" value="Start" onclick="StopwatchPlayStopResume(this.id)">
+    <input type="button" id="resetStopwatch" value="Reset" onclick="StopwatchPlayStopResume(this.id)">
+
+    <p id="showStopwatch"></p>
+</div>
+
+<div class="timer">
+<p>Time: <span id="datetime"></span></p>
+</div>
+
 <audio id="beep">
   <source src="Beep25.mp3" type="audio/mp3">
     Whoops! Here should be an audio element but your browser does not seem to support it.
 </audio>
-
-</div>
 
 </body>
 </html>
