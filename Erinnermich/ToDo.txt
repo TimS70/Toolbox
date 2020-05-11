@@ -1,3 +1,4 @@
-Eating times
-Keyboard commands
-return
+Remove Element when clicked or "Hello" alarm?
+Design ideas
+Font color
+Buttons

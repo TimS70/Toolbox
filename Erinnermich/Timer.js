@@ -4,12 +4,36 @@ var sec;
 var stopwatchState = 0;
 var stopwatchInterval;
 var stopwatchSec = 0;
+var hideState = 0;
+
+//alert("Hello!");
+
+function showHideElements() {
+    var control  = document.getElementById("control");
+    if (control.style.display === "none") {
+      control.style.display = "block";
+    } else {
+      control.style.display = "none";
+    }
+}
 
 //Show time
 setInterval(function() {
     var dt = new Date();
-    document.getElementById("datetime").innerHTML = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-}, 6000)
+    var currentTime = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    document.getElementById("datetime").innerHTML = currentTime;
+    if ((dt.getHours()==12 && dt.getMinutes()==00) ||
+        (dt.getHours()==15 && dt.getMinutes()==00) ||
+        (dt.getHours()==18 && dt.getMinutes()==00)) {
+        document.getElementById("Achievement").play();
+        alert("Food");
+    }
+
+    if (dt.getHours()==20 && dt.getMinutes()==00) {
+        document.getElementById("Achievement").play();
+        alert("Sleep");
+    }
+}, 60000)
 
 // Timer issues
 
@@ -53,9 +77,8 @@ function countdown() {
         sec -= 1;
 
         if (sec<=0) {
-            var beep = document.getElementById("beep"); //sound beep
-            beep.play();
-            alert("Stretching, Musik, Wasser")
+            document.getElementById("beep").play();
+            alert("Stretching, Musik, Wasser");
             open("https://docs.google.com/spreadsheets/d/19EUV_CV-yVsehXXbB-IABMfWjEw7siydBhsiAJodR9Y/edit#gid=0", "_blank")
             clearInterval(timerInterval);
             resetTimer();
@@ -87,12 +110,10 @@ function StopwatchPlayStopResume(bId) {
     if (bId == "stopwatch") {
         if (stopwatchState == 0) {
             // start countdown
-            //var inputMinutes = 0;
-            //var inputSeconds = 0;
-            //stopwatchSec = 60 * inputMinutes + parseInt(inputSeconds);
+            stopwatchSec = 0;
             document.getElementById("showStopwatch").innerHTML =
-                0 + " : " + 0;
-            countup();
+                Math.floor(stopwatchSec/60) + " : " + (stopwatchSec%60);
+                countup();
             document.getElementById("stopwatch").value = "Stop";
             stopwatchState = 1;
 
