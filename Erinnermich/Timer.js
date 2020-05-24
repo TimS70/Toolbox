@@ -78,8 +78,8 @@ function countdown() {
 
         if (sec<=0) {
             document.getElementById("beep").play();
-            alert("Stretching, Musik, Wasser");
-            open("https://docs.google.com/spreadsheets/d/19EUV_CV-yVsehXXbB-IABMfWjEw7siydBhsiAJodR9Y/edit#gid=0", "_blank")
+            open("https://docs.google.com/spreadsheets/d/19EUV_CV-yVsehXXbB-IABMfWjEw7siydBhsiAJodR9Y/edit#gid=0");
+            open("file:///C:/Users/User/GitHub/Toolbox/Erinnermich/Note.html");
             clearInterval(timerInterval);
             resetTimer();
             document.getElementById("timer").value = "Start";
