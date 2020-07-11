@@ -2,95 +2,50 @@
 <head>
   <title>Workout Timer</title>
   <link rel="stylesheet" type=text/css href="Style.css" />
-    <script src="jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="jquery-3.5.1.js" type="text/javascript">
+    </script>
+    <script src="jquery-ui.min.js" type="text/javascript">
+    </script>
 </head>
 
 <body>
-<div class="top">
-  <h1>Countdown</h1>
-</div>
-<div class="control">
-    <table>
-        <tr>
-            <td>
-                <label for="iSeconds">How long?</label>
-            </td>
-            <td>
-                <input type="number" value="5" step="1"
-                       id="iSeconds" class="myInput">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="iBreak">How much break?</label>
-            </td>
-            <td>
-                <input type="number" value="5" step="1"
-                       id="iBreak" class="myInput">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="iMaxLoops">How many loops per set?
-                </label>
-            </td>
-            <td>
-                <input type="number" value="2" step="1"
-                       id="iMaxLoops" class="myInput"></td>
-        </tr>        <tr>
-            <td>
-                <label for="iMaxSets">How many sets?</label>
-            </td>
-            <td>
-                <input type="number" value="2" step="1"
-                       id="iMaxSets" class="myInput">
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <button id="Start" accesskey="c"> Start</button>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<br>
-<br>
-
-<div class="output">
-  <table align="left">
-    <tr>
-      <td>Seconds left</td>
-      <td><p class="countdown" id="showSeconds"></p></td>
-    </tr>
-    <tr>
-      <td>Break</td>
-      <td><p class="countdown" id="break"></p></td>
-    </tr>
-    <tr>
-      <td>Loop</td>
-      <td><p id="loop"></p></td>
-    </tr>
-    <tr>
-      <td>Set</td>
-      <td><p id="set"></p></td>
-  </table>
-  <br>
-</div>
-
-<div class="backend">
-  <audio id="beep">
-    <source src="Beep25.mp3" type="audio/mp3">
-      Whoops! Here should be an audio element but your browser does not seem to support it.
-  </audio>
-  <audio id="achievement">
-    <source src="Achievement.mp3" type="audio/mp3">
-      Whoops! Here should be another audio element but your browser does not seem to support it.
-  </audio>
-</div>
-
+    <div class="Countdown">
+        <input type="number" value="20" step="1" id="iSeconds"
+               class="myInput">
+        <input type="number" value="10" step="1" id="iBreak"
+               class="myInput">
+    </div>
+    <div class="LoopAndSet">
+        <div class="loopDiv">
+            <span id="loop"></span>
+            <input type="number" value="1" step="1" id="iMaxLoops"
+                   class="myInput">
+        </div>
+        <div id="setDiv">
+            <span id="set"></span>
+            <input type="number" value="30" step="1" id="iMaxSets"
+                   class="myInput">
+        </div>
+    </div>
+    <div id="control">
+        <div class="top">
+            <h1>Workout Timer</h1>
+        </div>
+        <br>
+        <button id="Start" accesskey="c">Start (c)</button>
+        <button id="bHide" accesskey="a">Hide Control (a)</button>
+    </div>
 </body>
+<audio id="beep">
+    <source src="Beep25.mp3" type="audio/mp3">
+    Whoops! Here should be an audio element but your browser
+    does not seem to support it.
+</audio>
+<audio id="achievement">
+    <source src="Achievement.mp3" type="audio/mp3">
+    Whoops! Here should be another audio element but your
+    browser does not seem to support it.
+</audio>
 </html>
 
 <script src="main.js"></script>

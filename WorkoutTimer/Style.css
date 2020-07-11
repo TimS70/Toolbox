@@ -1,19 +1,96 @@
 body {
     font-family: "Open Sans";
+    background-color: #F1F0EB;
 }
 
-.h1 {
-    font-size: 14pt;
-    font-weight: bold;
+#control {
+    position: fixed;
+    left: 75%;
+    height: 100%;
+    border-left: 1px solid white;
+    padding: 25px 25px 25px 25px;
 }
 
-.top {
+input:focus {
+    outline: none;
+}
+
+input {
+    border: none;
+    background-color: #F1F0EB;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#iSeconds {
+    position: fixed;
+    top: 10%;
+    right: 50%;
+
+    width: 50%;
+    height: 60%;
+
+    font-size: 30em;
+    text-align: right;
+    color: #D79922;
+}
+
+#iBreak {
+    position: fixed;
+    top: 45%;
+    left: 52%;
+
+    width: 18%;
+    height: 30%;
+
+    font-size: 15em;
+    text-align: left;
+    color: #F13C20;
+}
+
+.LoopAndSet {
+    position: fixed;
+    display: flex;
+    top: 68%;
+    right: 50%;
+
+    width: 18%;
+    font-size: 2em;
     text-align: center;
-    border-bottom-style: solid;
 }
 
-.countdown {
-    font-weight: bold;
-    font-size: 30pt;
-    color: black;
+#loopDiv {
+    color: #C5CBE3;
+}
+
+#loop {
+    color: #C5CBE3;
+}
+
+#iMaxLoops {
+    width: 50%;
+    height: 40%;
+
+    font-size: 2em;
+    text-align: left;
+    color: #C5CBE3;
+}
+
+#setDiv {
+    color: #4056A1;
+}
+
+#iMaxSets {
+    width: 50%;
+    height: 40%;
+
+    font-size: 2em;
+    text-align: left;
+    color: #4056A1;
 }
