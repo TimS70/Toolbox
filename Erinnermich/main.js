@@ -1,15 +1,14 @@
-var timerState = 0;
-var timerInterval;
-var sec;
-var stopwatchState = 0;
-var stopwatchInterval;
-var stopwatchSec = 0;
-var hideState = 0;
+let timerState = 0;
+let timerInterval;
+let sec;
+let stopwatchState = 0;
+let stopwatchInterval;
+let stopwatchSec = 0;
 
 //alert("Hello!");
 
 function showHideElements() {
-    var control  = document.getElementById("control");
+    let control  = document.getElementById("control");
     if (control.style.display === "none") {
       control.style.display = "block";
     } else {
@@ -19,18 +18,22 @@ function showHideElements() {
 
 //Show time
 setInterval(function() {
-    var dt = new Date();
-    var currentTime = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-    document.getElementById("datetime").innerHTML = currentTime;
-    if ((dt.getHours()==12 && dt.getMinutes()==00) ||
-        (dt.getHours()==15 && dt.getMinutes()==00) ||
-        (dt.getHours()==18 && dt.getMinutes()==00)) {
-        document.getElementById("Achievement").play();
+    let dt = new Date();
+    document.getElementById("datetime").innerHTML =
+        dt.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    if ((dt.getHours()===12 && dt.getMinutes()===0) ||
+        (dt.getHours()===15 && dt.getMinutes()===0) ||
+        (dt.getHours()===18 && dt.getMinutes()===0)) {
+
+        document.getElementById("beep").play();
+        setTimeout(function() {
+            document.getElementById("beep").play();
+        }, 1000);
         alert("Food");
     }
 
-    if (dt.getHours()==20 && dt.getMinutes()==00) {
-        document.getElementById("Achievement").play();
+    if (dt.getHours()===20 && dt.getMinutes()===0) {
+        document.getElementById("beep").play();
         alert("Sleep");
     }
 }, 60000)
@@ -38,11 +41,11 @@ setInterval(function() {
 // Timer issues
 
 function TimerPlayStopResume(bId) {
-    if (bId == "timer") {
-        if (timerState == 0) {
+    if (bId === "timer") {
+        if (timerState === 0) {
             // start countdown
-            var inputMinutes = document.getElementById("inputMinutes").value;
-            var inputSeconds = document.getElementById("inputSeconds").value;
+            let inputMinutes = document.getElementById("inputMinutes").value;
+            let inputSeconds = document.getElementById("inputSeconds").value;
             sec = 60 * inputMinutes + parseInt(inputSeconds);
             document.getElementById("showtime").innerHTML =
                 inputMinutes + ":" + inputSeconds;
@@ -50,13 +53,13 @@ function TimerPlayStopResume(bId) {
             document.getElementById("timer").value = "Stop";
             timerState = 1;
 
-        } else if (timerState == 1) {
+        } else if (timerState === 1) {
             // stop countdown
             stopTimer();
             document.getElementById("timer").value = "Resume";
             timerState = 2;
 
-        } else if (timerState == 2) {
+        } else if (timerState === 2) {
             // resume countdown
             countdown();
             document.getElementById("timer").value = "Stop";
@@ -64,7 +67,7 @@ function TimerPlayStopResume(bId) {
         }
     }
 
-    else if (bId == "resetTimer") {
+    else if (bId === "resetTimer") {
         // reset countdown
         resetTimer();
         document.getElementById("timer").value = "Start";
@@ -98,8 +101,8 @@ function stopTimer() {
 
 function resetTimer() {
     clearInterval(timerInterval);
-    var inputMinutes = document.getElementById("inputMinutes").value;
-    var inputSeconds = document.getElementById("inputSeconds").value;
+    let inputMinutes = document.getElementById("inputMinutes").value;
+    let inputSeconds = document.getElementById("inputSeconds").value;
     document.getElementById("showtime").innerHTML =
         inputMinutes + ":" + inputSeconds;
 }
@@ -107,8 +110,8 @@ function resetTimer() {
 // Stopwatch issues
 
 function StopwatchPlayStopResume(bId) {
-    if (bId == "stopwatch") {
-        if (stopwatchState == 0) {
+    if (bId === "stopwatch") {
+        if (stopwatchState === 0) {
             // start countdown
             stopwatchSec = 0;
             document.getElementById("showStopwatch").innerHTML =
@@ -117,13 +120,13 @@ function StopwatchPlayStopResume(bId) {
             document.getElementById("stopwatch").value = "Stop";
             stopwatchState = 1;
 
-        } else if (stopwatchState == 1) {
+        } else if (stopwatchState === 1) {
             // stop countdown
             stopStopwatch();
             document.getElementById("stopwatch").value = "Resume";
             stopwatchState = 2;
 
-        } else if (stopwatchState == 2) {
+        } else if (stopwatchState === 2) {
             // resume countdown
             countup();
             document.getElementById("stopwatch").value = "Stop";
@@ -131,7 +134,7 @@ function StopwatchPlayStopResume(bId) {
         }
     }
 
-    else if (bId == "resetStopwatch") {
+    else if (bId === "resetStopwatch") {
         // reset countdown
         resetStopwatch();
         document.getElementById("stopwatch").value = "Start";

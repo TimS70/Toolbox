@@ -22,13 +22,15 @@ function setTimer(loopNr=0) {
   var ex = [];
   for (var i=1; i<=9; i++) {
     var value = document.getElementById("ex" + i).value;
-
     if (value !== "") {
       ex.push(value);
     }
   }
 
-  document.getElementById("bLoop").addEventListener("click", function() {loop(ex = ex, loopNr = loopNr)});
+  $("#bLoop").click(function() {
+      loop(ex = ex, loopNr = loopNr);
+      $("#bLoop").click(stopTimer).text("Stop");
+  });
 
   //Output
   document.getElementById("demo").innerHTML = t;
@@ -128,3 +130,24 @@ function myBreak() {
 
   }, 1000) //Close setTimer and repeat every second
 }
+
+function ShowHideElements() {
+    let buttonLabel = $("#ShowHideElements").text();
+    //i
+
+    if (buttonLabel === "Show Exercises (Alt + c)") {
+        $(".exercise").show();
+        $("#ShowHideElements").text("Hide Exercises (Alt + c)");
+    } else {
+        $(".exercise").hide();
+        $("#ShowHideElements").text("Show Exercises (Alt + c)");
+    }
+}
+
+$(document).ready(function() {
+    $(".exercise").hide();
+    $("#ShowHideElements").click(ShowHideElements);
+    $("#bReset").click(function() {
+        setTimer();
+    });
+});
