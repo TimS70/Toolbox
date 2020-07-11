@@ -2,6 +2,8 @@
 <head>
   <title>Erinnermich</title>
   <link rel="stylesheet" type=text/css href="Style.css" />
+  <script src="jquery-3.5.1.js"></script>
+
 </head>
 
 <body>
@@ -19,9 +21,9 @@
     Set time
     <br>
     <br>
-    <input type="number" id="inputMinutes" class="timeinput" value="25" class="tIn">
+    <input type="number" id="inputMinutes" class="timeinput" value="25">
     :
-    <input type="number" id="inputSeconds" class="timeInput" value="00" class="tIn">
+    <input type="number" id="inputSeconds" class="timeInput" value="00">
     <br>
     <br>
     <input type="button" id="timer" value="Start (q)" accesskey="q" onclick="TimerPlayStopResume(this.id)">
@@ -52,8 +54,8 @@
       <source src="Achievement.mp3" type="audio/mp3">
         Whoops! Here should be an audio element but your browser does not seem to support it.
     </audio>
-<div>
+</div>
 </body>
-</html>
 
-<script src="Timer.js"></script>
+<script src="main.js"></script>
+</html>

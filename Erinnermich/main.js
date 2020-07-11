@@ -6,6 +6,8 @@ let stopwatchInterval;
 let stopwatchSec = 0;
 
 //alert("Hello!");
+// Ask for allowing external files
+open("file:///C:/Users/User/GitHub/Toolbox/Erinnermich/Note.html");
 
 function showHideElements() {
     let control  = document.getElementById("control");

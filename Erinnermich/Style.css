@@ -5,12 +5,17 @@ body {
     box-sizing: border-box;
 }
 
-
-
 .row {
   display: flex;
-  margin:top
 }
+
+#control {
+    flex: 15%;
+    height: 100%;
+    border-left: 1px solid white;
+    padding: 25px 25px 25px 25px;
+}
+
 #output {
     flex: 85%;
     height:100%;
@@ -22,12 +27,6 @@ body {
     padding-left: 5%;
 }
 
-#control {
-    flex: 15%;
-    height: 100%;
-    border-left: 1px solid white;
-    padding: 25px 25px 25px 25px;
-}
 
 #showtime {
     color: white;
