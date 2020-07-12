@@ -74,7 +74,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #iMaxLoops {
-    width: 50%;
+    width: 55%;
     height: 40%;
 
     font-size: 2em;
@@ -87,7 +87,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #iMaxSets {
-    width: 50%;
+    width: 55%;
     height: 40%;
 
     font-size: 2em;
