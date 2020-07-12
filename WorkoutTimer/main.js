@@ -68,6 +68,7 @@ function myBreak(callback) {
             if (b < 1) {
                 clearInterval(myBreakInterval);
                 endCountdown();
+                b = bInit;
                 callback();
                 startLoop();
             }
