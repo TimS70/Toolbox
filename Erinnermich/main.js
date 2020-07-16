@@ -5,10 +5,6 @@ let stopwatchState = 0;
 let stopwatchInterval;
 let stopwatchSec = 0;
 
-//alert("Hello!");
-// Ask for allowing external files
-open("file:///C:/Users/User/GitHub/Toolbox/Erinnermich/Note.html");
-
 function showHideElements() {
     let control  = document.getElementById("control");
     if (control.style.display === "none") {
@@ -23,9 +19,10 @@ setInterval(function() {
     let dt = new Date();
     document.getElementById("datetime").innerHTML =
         dt.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-    if ((dt.getHours()===12 && dt.getMinutes()===0) ||
-        (dt.getHours()===15 && dt.getMinutes()===0) ||
-        (dt.getHours()===18 && dt.getMinutes()===0)) {
+    if ((dt.getHours()===10 && dt.getMinutes()===0)  ||
+        (dt.getHours()===12 && dt.getMinutes()===30) ||
+        (dt.getHours()===15 && dt.getMinutes()===30) ||
+        (dt.getHours()===18 && dt.getMinutes()===30)) {
 
         document.getElementById("beep").play();
         setTimeout(function() {
@@ -162,3 +159,8 @@ function resetStopwatch() {
     clearInterval(stopwatchInterval);
     document.getElementById("showStopwatch").innerHTML = 0 + ":" + 0;
 }
+
+$(document).ready(() => {
+	open("file:///C:/Users/User/GitHub/Toolbox/Erinnermich/Note.html");
+	TimerPlayStopResume("timer");
+});
