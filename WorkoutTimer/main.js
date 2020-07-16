@@ -15,6 +15,8 @@ function initInput() {
 }
 
 function updateInput() {
+    tInit = $("#iSeconds").val();
+    bInit = $("#iBreak").val();
     maxLoop = $("#iMaxLoops").val();
     maxSet = $("#iMaxSets").val();
     $("#loop").text(loop + '/');
