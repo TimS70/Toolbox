@@ -1,9 +1,9 @@
 let myInterval;
 let myBreakInterval;
 let tInit = null;
-let t = null
-let b = null;
+let t = tInit;
 let bInit = null;
+let b = bInit;
 let maxLoop = null;
 let maxSet = null;
 let loop = 1;
@@ -23,9 +23,8 @@ function updateInput() {
     $("#set").text(set + '/');
 }
 
-function startLoop() {
+function myTimer() {
     clearInterval(myInterval);
-    t = tInit;
 
     myInterval = setInterval(function() {
         if (t < 10) {
@@ -60,7 +59,6 @@ function startLoop() {
 }
 
 function myBreak(callback) {
-    b = bInit;
     myBreakInterval = setInterval(function() {
 
         if (b < 10) {
@@ -72,7 +70,7 @@ function myBreak(callback) {
                 endCountdown();
                 b = bInit;
                 callback();
-                startLoop();
+                myTimer();
             }
         }
         $("#iBreak").val(b);
@@ -91,6 +89,7 @@ function endTimer() {
     clearInterval(myBreakInterval);
     document.getElementById("achievement")
         .play();
+    reset();
 }
 
 function showControl() {
@@ -100,22 +99,45 @@ function showControl() {
     });
 }
 
+function initTimer() {
+    t = tInit;
+    b = bInit;
+    myTimer();
+
+    $("#Start").text("Stop (q)").click(function() {
+        stopTimer();
+    });
+}
+
 // TODO: Stop and Resume
 function stopTimer() {
     clearInterval(myInterval);
     clearInterval(myBreakInterval);
 
-    $("#Start").text("Resume").click(function() {
+    $("#Start").text("Resume (q)").click(function() {
         resumeTimer();
     });
 }
 
 function resumeTimer() {
-    startLoop();
+    t = $("#iSeconds").val();
+    b = $("#iBreak").val();
+    myTimer();
 
-    $("#Start").text("Stop").click(function() {
+    $("#Start").text("Stop (q)").click(function() {
         stopTimer();
     });
+}
+
+function resetTimer() {
+    clearInterval(myInterval);
+    clearInterval(myBreakInterval);
+    $("#iSeconds").val(tInit);
+    $("#iBreak").val(bInit);
+    loop = 1;
+    set = 1;
+    $("#loop").text(loop + '/');
+    $("#set").text(set + '/');
 }
 
 function hideControl() {
@@ -131,18 +153,16 @@ $(document).ready(function() {
     hideControl();
 
     $("#Start").click(function() {
-        startLoop();
-        $("#Start").click(function() {
-           $(this).text("Stop").click(function() {
-               stopTimer();
-           });
-        });
+        initTimer();
     });
 
     $(".myInput").change(function() {
        updateInput();
     });
 
+    $("#bReset").click(function() {
+        resetTimer();
+    });
 
 // TODO: Tooltips for the numbers
     $( "#iSeconds" ).tooltip({

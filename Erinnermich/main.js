@@ -8,9 +8,9 @@ let stopwatchSec = 0;
 function showHideElements() {
     let control  = document.getElementById("control");
     if (control.style.display === "none") {
-      control.style.display = "block";
+	$("#control").show();      
     } else {
-      control.style.display = "none";
+	$("#control").hide();
     }
 }
 
@@ -161,6 +161,7 @@ function resetStopwatch() {
 }
 
 $(document).ready(() => {
+	$("#control").hide();
 	open("file:///C:/Users/User/GitHub/Toolbox/Erinnermich/Note.html");
 	TimerPlayStopResume("timer");
 });
